@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CipherHunt Login</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+    body {
+      background: #111;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .container {
+      background: #222;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      width: 100%;
+      max-width: 500px;
+    }
+    input[type="text"], input[type="password"] {
+      padding: 10px;
+      width: 100%;
+      margin-bottom: 15px;
+      border: none;
+      border-radius: 5px;
+    }
+    button {
+      padding: 10px 20px;
+      border: none;
+      background: #28a745;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 5px;
+      width: 100%;
+    }
+    .passage, .question, .answerBox, .riddleSection {
+      display: none;
+      margin-top: 20px;
+    }
+    .no-copy {
+      user-select: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+    }
+    h2, h3 {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+    p, label {
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+    @media screen and (max-width: 600px) {
+      .container {
+        padding: 20px;
+      }
+      button {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="loginSection">
+      <h2>Tech Vistara Login</h2>
+      <input type="text" id="username" placeholder="Team ID">
+      <input type="password" id="password" placeholder="Password">
+      <button onclick="login()">Login</button>
+    </div>
+
+    <div class="passage no-copy" id="passage">
+      <h3>The Crystal Frequency3 - Passage </h3>
+      <p>The Ancient Observatory
+The exploration team discovered an underground chamber with seven glowing crystals arranged in a perfect circle. 
+Dr. Chen found an inscription on the central pedestal: "The frequency of enlightenment resonates at harmonic convergence." 
+Below it, the number 187 was clearly etched into the stone, 
+pulsing with the same rhythm as the crystals.
+ The chamber walls displayed patterns of raised and recessed dots in groups of eight, suggesting the ancients used binary encoding. 
+ To activate the crystal technology and proceed deeper, 
+ the team needed to convert this frequency number into binary.
+ </p>
+      <button onclick="showQuestion()">Next</button>
+    </div>
+
+    <div class="question" id="question">
+      <h3>Question - Select the numnber given in the question and then convert into decimal</h3>
+      <p>The team must convert the frequency number 187 to binary to activate the ancient crystal technology.
+What is the binary equivalent of the decimal number 187?
+</p>
+      <label><input type="radio" name="mcq" value="A">187</label><br>
+      <label><input type="radio" name="mcq" value="B">78</label><br>
+      <label><input type="radio" name="mcq" value="C">788</label><br>
+      <label><input type="radio" name="mcq" value="D">878</label><br>
+      <button onclick="checkMCQ()">Submit MCQ</button>
+    </div>
+
+    <div class="answerBox" id="answerBox">
+      <h3>Enter Your Answer </h3>
+      <input type="text" id="binaryAnswer" placeholder="enter the answer here">
+      <button onclick="submitAnswer()">Submit</button>
+    </div>
+
+    <div class="riddleSection" id="riddleSection">
+      <h3>🎉 Correct!</h3>
+      <p>Here’s your next riddle:</p>
+      <p><em>"I have keys but no locks, space but no rooms, you can enter but can’t go outside. What am I?"</em></p>
+    </div>
+  </div>
+
+  <script>
+    let attemptCount = 0;
+
+    function login() {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      if (username === "100" && password === "423") {
+        document.querySelector('.loginSection').style.display = 'none';
+        document.getElementById('passage').style.display = 'block';
+      } else {
+        alert("Invalid login");
+      }
+    }
+
+    function showQuestion() {
+      document.getElementById('passage').style.display = 'none';
+      document.getElementById('question').style.display = 'block';
+    }
+
+    function checkMCQ() {
+      const selected = document.querySelector('input[name="mcq"]:checked');
+      if (!selected) {
+        alert("Select an option");
+        return;
+      }
+      if (selected.value === "A") {
+        document.getElementById('question').style.display = 'none';
+        document.getElementById('answerBox').style.display = 'block';
+      } else {
+        alert("Wrong answer. Try again.");
+      }
+    }
+
+    function submitAnswer() {
+      const answer = document.getElementById('binaryAnswer').value.trim();
+      const correctAnswer = "10111011";
+
+      if (answer === correctAnswer) {
+        document.getElementById('answerBox').style.display = 'none';
+        document.getElementById('riddleSection').style.display = 'block';
+      } else {
+        attemptCount++;
+        if (attemptCount >= 2) {
+          alert("You are disqualified.");
+          location.reload();
+        } else {
+          alert("Wrong answer. 1 attempt left.");
+        }
+      }
+    }
+
+    // Disable right click and copy/paste
+    document.addEventListener('contextmenu', event => event.preventDefault());
+    document.addEventListener('copy', e => e.preventDefault());
+    document.addEventListener('cut', e => e.preventDefault());
+    document.addEventListener('paste', e => e.preventDefault());
+  </script>
+</body>
+</html>
