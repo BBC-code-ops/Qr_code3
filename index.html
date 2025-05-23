@@ -84,33 +84,29 @@
     </div>
 
     <div class="passage no-copy" id="passage">
-      <h3>The Crystal Frequency3 - Passage </h3>
-      <p>The Ancient Observatory
-The exploration team discovered an underground chamber with seven glowing crystals arranged in a perfect circle. 
-Dr. Chen found an inscription on the central pedestal: "The frequency of enlightenment resonates at harmonic convergence." 
-Below it, the number 187 was clearly etched into the stone, 
-pulsing with the same rhythm as the crystals.
- The chamber walls displayed patterns of raised and recessed dots in groups of eight, suggesting the ancients used binary encoding. 
- To activate the crystal technology and proceed deeper, 
- the team needed to convert this frequency number into binary.
+      <h3>The Quantum Lock3 - Passage </h3>
+      <p>Agent Reeves stared at the holographic display in the abandoned research facility. 
+        The quantum computer flickered with a message: "Access requires the ancient knowledge of binary truth."
+         Below it, eight digits pulsed: 01110001
+This wasn't random—it was a test. The vault contained classified encryption keys the resistance desperately needed. 
+Reeves had one chance to convert the binary to decimal before the system self-destructed.
  </p>
       <button onclick="showQuestion()">Next</button>
     </div>
 
     <div class="question" id="question">
       <h3>Question - Select the numnber given in the question and then convert into decimal</h3>
-      <p>The team must convert the frequency number 187 to binary to activate the ancient crystal technology.
-What is the binary equivalent of the decimal number 187?
+      <p>The team must convert the radiation level 203 to binary to unlock the quantum device.
 </p>
-      <label><input type="radio" name="mcq" value="A">187</label><br>
-      <label><input type="radio" name="mcq" value="B">78</label><br>
-      <label><input type="radio" name="mcq" value="C">788</label><br>
-      <label><input type="radio" name="mcq" value="D">878</label><br>
+      <label><input type="radio" name="mcq" value="A">2003</label><br>
+      <label><input type="radio" name="mcq" value="B">23</label><br>
+      <label><input type="radio" name="mcq" value="C">023</label><br>
+      <label><input type="radio" name="mcq" value="D">203</label><br>
       <button onclick="checkMCQ()">Submit MCQ</button>
     </div>
 
     <div class="answerBox" id="answerBox">
-      <h3>Convert the number into binary </h3>
+      <h3>Enter Your Answer </h3>
       <input type="text" id="binaryAnswer" placeholder="enter the answer here">
       <button onclick="submitAnswer()">Submit</button>
     </div>
@@ -118,8 +114,8 @@ What is the binary equivalent of the decimal number 187?
     <div class="riddleSection" id="riddleSection">
       <h3>🎉 Correct!</h3>
       <p>Here’s your next riddle:</p>
-      <p><em>"I host the lights, the sound, the show, Sit in silence, let talents flow.
-"</em></p>
+      <p><em>"I am the place Where Mind Spark quiz made you think and click,
+Come back now"</em></p>
     </div>
   </div>
 
@@ -149,7 +145,7 @@ What is the binary equivalent of the decimal number 187?
         alert("Select an option");
         return;
       }
-      if (selected.value === "A") {
+      if (selected.value === "D") {
         document.getElementById('question').style.display = 'none';
         document.getElementById('answerBox').style.display = 'block';
       } else {
@@ -159,7 +155,7 @@ What is the binary equivalent of the decimal number 187?
 
     function submitAnswer() {
       const answer = document.getElementById('binaryAnswer').value.trim();
-      const correctAnswer = "10111011";
+      const correctAnswer = "11001011";
 
       if (answer === correctAnswer) {
         document.getElementById('answerBox').style.display = 'none';
